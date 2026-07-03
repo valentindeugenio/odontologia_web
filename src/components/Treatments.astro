@@ -1,0 +1,30 @@
+---
+import { treatments } from '../data/treatments.js';
+---
+
+<section class="services" id="tratamientos">
+  <div class="container">
+    <span class="section-tag">TRATAMIENTOS</span>
+    <h2>Soluciones odontológicas para recuperar tu sonrisa</h2>
+    <p class="section-description">Trabajamos con tratamientos modernos, planificación personalizada y materiales de primera calidad.</p>
+    <div class="services-grid">
+      {treatments.map((treatment) => (
+        <article class="service-card">
+          <div class="service-image"><img src={treatment.image} alt={treatment.alt} loading="lazy" /></div>
+          <div class="service-content">
+            <h3>{treatment.title}</h3>
+            <p>{treatment.description}</p>
+            <button class="service-toggle" type="button" aria-expanded="false" aria-controls={treatment.detailsId}>Más información <span aria-hidden="true">+</span></button>
+            <div class="service-details" id={treatment.detailsId}>
+              <h4>{treatment.heading}</h4>
+              <ul>
+                {treatment.bulletPoints.map((point) => <li>{point}</li>)}
+              </ul>
+              <p>{treatment.footer}</p>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

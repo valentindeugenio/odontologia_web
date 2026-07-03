@@ -1,0 +1,15 @@
+---
+import { testimonials } from '../data/testimonials.js';
+---
+
+<section class="reviews" id="testimonios">
+  <div class="container">
+    <span class="section-tag">RESEÑAS</span>
+    <h2>Lo que dicen nuestros pacientes</h2>
+    <div class="review-grid">
+      {testimonials.map((testimonial) => (
+        <div class="review-card">★★★★★<p>{testimonial.quote}</p><strong>{testimonial.author}</strong></div>
+      ))}
+    </div>
+  </div>
+</section>

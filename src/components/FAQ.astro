@@ -1,0 +1,18 @@
+---
+import { faqItems } from '../data/faq.js';
+---
+
+<section class="faq" id="faq">
+  <div class="container">
+    <span class="section-tag">PREGUNTAS FRECUENTES</span>
+    <h2>Resolvemos tus dudas</h2>
+    <div class="faq-container">
+      {faqItems.map((item) => (
+        <div class="faq-item">
+          <button class="faq-question" type="button" aria-expanded="false">{item.question}<span>+</span></button>
+          <div class="faq-answer"><p>{item.answer}</p></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

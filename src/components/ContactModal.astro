@@ -1,0 +1,55 @@
+<dialog class="profile-dialog" id="professionalProfile" aria-labelledby="profileName">
+  <button class="profile-close" type="button" aria-label="Cerrar perfil">×</button>
+  <div class="profile-dialog-grid">
+    <img id="profileImage" src="" alt="" />
+    <div class="profile-dialog-content">
+      <span class="section-tag">ACERCA DE MÍ</span>
+      <h2 id="profileName"></h2>
+      <p class="profile-specialty" id="profileSpecialty"></p>
+      <div class="profile-years"><strong id="profileYears"></strong><span>de experiencia*</span></div>
+      <p id="profileBio"></p>
+      <ul class="profile-highlights" id="profileHighlights"></ul>
+      <button class="btn-nav abrir-modal profile-booking" type="button">Solicitar consulta</button>
+      <small>*Información demostrativa pendiente de confirmación.</small>
+    </div>
+  </div>
+</dialog>
+
+<div class="modal" id="consultaModal">
+  <div class="modal-box">
+    <div class="modal-progress"><div class="modal-progress-bar" id="modalProgress"></div></div>
+    <button class="cerrar-modal" id="cerrarModal" type="button">×</button>
+    <div id="step1">
+      <h2>Solicitá una consulta</h2>
+      <p>Elegí el tratamiento que querés conversar con nuestro equipo.</p>
+      <div class="tratamientos-grid">
+        <div class="tratamiento-card" data-tratamiento="Implantes Dentales"><div class="icono">🦷</div><div class="card-info"><h3>Implantes Dentales</h3><p>Recuperá una o más piezas dentarias con un tratamiento personalizado.</p></div></div>
+        <div class="tratamiento-card" data-tratamiento="Estética Dental"><div class="icono">✨</div><div class="card-info"><h3>Estética Dental</h3><p>Blanqueamientos y tratamientos para mejorar tu sonrisa.</p></div></div>
+        <div class="tratamiento-card" data-tratamiento="Endodoncia"><div class="icono">🩺</div><div class="card-info"><h3>Endodoncia</h3><p>Tratamientos de conducto para conservar tus piezas dentarias.</p></div></div>
+        <div class="tratamiento-card" data-tratamiento="Limpieza y Control"><div class="icono">🪥</div><div class="card-info"><h3>Limpieza y Control</h3><p>Controles preventivos y limpiezas profesionales.</p></div></div>
+        <div class="tratamiento-card urgente" data-tratamiento="Urgencias"><div class="icono">🚨</div><div class="card-info"><h3>Urgencias</h3><p>Si tenés dolor intenso o una urgencia, escribinos directamente para atención rápida.</p></div></div>
+        <div class="tratamiento-card" data-tratamiento="Otra consulta"><div class="icono">💬</div><div class="card-info"><h3>Otra consulta</h3><p>Si tu consulta no figura en la lista, escribinos y te ayudaremos.</p></div></div>
+      </div>
+    </div>
+    <div id="step2" style="display:none;">
+      <button class="volver" id="volverStep" type="button">← Volver</button>
+      <div class="modal-step-heading">
+        <span class="section-tag">CONSULTA RÁPIDA</span>
+        <h2 id="tituloTratamiento"></h2>
+        <p id="descripcionTratamiento"></p>
+      </div>
+      <form class="modal-form" novalidate>
+        <label class="campo-label" for="nombrePaciente">Nombre</label>
+        <input id="nombrePaciente" name="nombre" type="text" placeholder="Tu nombre" autocomplete="name" />
+        <p class="error" id="errorNombre"></p>
+        <label class="campo-label" for="telefonoPaciente">Teléfono</label>
+        <input id="telefonoPaciente" name="telefono" type="tel" placeholder="Tu teléfono" autocomplete="tel" inputmode="tel" />
+        <p class="error" id="errorTelefono"></p>
+        <label class="campo-label" for="mensajePaciente">Comentario opcional</label>
+        <textarea id="mensajePaciente" name="comentario" placeholder="Contanos brevemente qué necesitás."></textarea>
+        <p class="error" id="errorInformacion"></p>
+        <button class="modal-turno" id="enviarFormulario" type="button">Hablar con un especialista</button>
+      </form>
+    </div>
+  </div>
+</div>

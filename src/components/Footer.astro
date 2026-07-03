@@ -1,0 +1,24 @@
+---
+import { clinic } from '../data/clinic.js';
+---
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <h2>{clinic.name}</h2>
+      <p>{clinic.tagline}</p>
+      <p>Atención profesional y personalizada en la Ciudad de Buenos Aires.</p>
+    </div>
+    <div class="footer-column">
+      <h3>Consultorio</h3>
+      <a href={clinic.mapsLink} target="_blank" rel="noopener noreferrer">{clinic.address} · CABA</a>
+      <p>{clinic.openingHours}</p>
+    </div>
+    <div class="footer-column">
+      <h3>Contacto</h3>
+      <a href={clinic.whatsappLink} target="_blank" rel="noopener noreferrer">WhatsApp: {clinic.whatsappNumber}</a>
+      <a href={clinic.phoneHref}>Llamar al consultorio</a>
+    </div>
+    <p class="footer-legal">{clinic.footerNote}</p>
+  </div>
+</footer>

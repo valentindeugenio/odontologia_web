@@ -1,0 +1,30 @@
+---
+import { teamMembers } from '../data/team.js';
+---
+
+<section class="team" id="equipo">
+  <div class="container">
+    <span class="section-tag">NUESTRO EQUIPO</span>
+    <h2>Profesionales comprometidos con tu salud bucal</h2>
+    <p class="section-description">Nuestro equipo combina experiencia, formación continua y atención personalizada para brindar tratamientos de excelencia.</p>
+    <figure class="team-showcase">
+      <img src="/images/equipo-ai.webp" alt="Equipo odontológico en una clínica moderna" />
+      <figcaption>Imagen ilustrativa generada con IA. Reemplazar por la fotografía real del equipo.</figcaption>
+    </figure>
+    <div class="team-grid">
+      {teamMembers.map((member) => (
+        <article class="doctor-card" data-profile={member.id} tabindex="0">
+          <img src={member.image} alt={member.alt} loading="lazy" />
+          <div class="doctor-info">
+            <span class="doctor-experience">{member.experience}</span>
+            <h3>{member.name}</h3>
+            <span class="doctor-specialty">{member.specialty}</span>
+            <p>{member.description}</p>
+            <button class="profile-button" type="button">Conocer perfil →</button>
+          </div>
+        </article>
+      ))}
+    </div>
+    <p class="demo-data-note">*Imágenes, años de experiencia y perfiles ilustrativos. Reemplazar con la información real del equipo antes de publicar.</p>
+  </div>
+</section>
