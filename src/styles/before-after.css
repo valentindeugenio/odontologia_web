@@ -1,0 +1,58 @@
+.before-after {
+  background: #F8FAFC;
+}
+
+.result-comparison {
+  position: relative;
+  border-radius: 26px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.result-comparison img {
+  width: 100%;
+  display: block;
+}
+
+.result-label {
+  position: absolute;
+  top: 24px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: 800;
+  color: white;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.result-label-before {
+  left: 24px;
+}
+
+.result-label-after {
+  right: 24px;
+}
+
+.reviews {
+  background: white;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.review-card {
+  padding: 32px;
+  border-radius: 22px;
+  background: #F8FAFC;
+  box-shadow: var(--shadow);
+  color: #666;
+  line-height: 1.7;
+}
+
+.review-card strong {
+  display: inline-block;
+  margin-top: 16px;
+  color: var(--text);
+}

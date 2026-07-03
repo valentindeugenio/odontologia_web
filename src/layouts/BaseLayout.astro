@@ -1,0 +1,30 @@
+---
+import '../styles/base.css';
+import '../styles/variables.css';
+import '../styles/typography.css';
+import '../styles/utilities.css';
+import '../styles/navbar.css';
+import '../styles/hero.css';
+import '../styles/team.css';
+import '../styles/treatments.css';
+import '../styles/faq.css';
+import '../styles/before-after.css';
+import '../styles/footer.css';
+import '../styles/modal.css';
+const { title = 'Cavagna & Musacchio | Odontología Integral', description = 'Implantes dentales, estética dental, endodoncia y urgencias en Av. Santa Fe 3069, CABA.' } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
