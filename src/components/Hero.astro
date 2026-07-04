@@ -3,16 +3,23 @@ import { clinic } from '../data/clinic.js';
 ---
 
 <header class="hero" id="inicio">
-  <div class="hero-overlay"></div>
+  <div class="hero-overlay" aria-hidden="true"></div>
   <div class="hero-content">
-    <span class="location-pill">{clinic.locationLabel}</span>
-    <span class="hero-tag">{clinic.heroTag}</span>
-    <h1>{clinic.heroTitle}</h1>
-    <p>{clinic.heroDescription}</p>
-    <div class="hero-buttons">
-      <a href="#" class="btn-primary">Solicitar una consulta</a>
-      <a href={clinic.whatsappLink} class="btn-secondary" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    <div class="hero-copy">
+      <div class="hero-meta">
+        <span class="location-pill">{clinic.locationLabel}</span>
+        <span class="hero-tag">{clinic.heroTag}</span>
+      </div>
+      <h1>{clinic.heroTitle}</h1>
+      <p>{clinic.heroDescription}</p>
+      <div class="hero-buttons">
+        <a href="#" class="btn-primary">Solicitar una consulta</a>
+        <a href={clinic.whatsappLink} class="btn-secondary" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </div>
+      <div class="hero-info">
+        <span class="hero-stars" role="img" aria-label="5 de 5 estrellas">⭐⭐⭐⭐⭐</span>
+        <span>{clinic.heroStatsLabel}</span>
+      </div>
     </div>
-    <div class="hero-info">⭐⭐⭐⭐⭐ <span>{clinic.heroStatsLabel}</span></div>
   </div>
 </header>

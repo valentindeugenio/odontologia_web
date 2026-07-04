@@ -3,17 +3,19 @@ import { clinic } from '../data/clinic.js';
 ---
 
 <nav class="navbar" aria-label="Navegación principal">
-  <a class="logo" href="#inicio" aria-label="Cavagna y Musacchio, ir al inicio">
-    <h2>{clinic.name}</h2>
-    <span>{clinic.tagline}</span>
-  </a>
-  <ul id="mainNav">
-    {clinic.navigationLinks.map((link) => (
-      <li><a href={link.href}>{link.label}</a></li>
-    ))}
-  </ul>
-  <a href="#" class="btn-nav nav-booking">Agendar consulta</a>
-  <button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Abrir menú">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="navbar-inner">
+    <a class="logo" href="#inicio" aria-label="Cavagna y Musacchio, ir al inicio">
+      <h2>{clinic.name}</h2>
+      <span>{clinic.tagline}</span>
+    </a>
+    <ul id="mainNav">
+      {clinic.navigationLinks.map((link) => (
+        <li><a href={link.href}>{link.label}</a></li>
+      ))}
+    </ul>
+    <a href="#" class="btn-nav nav-booking">Agendar consulta</a>
+    <button class="mobile-menu-toggle" type="button" aria-expanded="false" aria-controls="mainNav" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
