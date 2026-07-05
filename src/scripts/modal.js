@@ -24,6 +24,8 @@ const initModal = () => {
     description: get('#descripcionTratamiento'),
     name: get('#nombrePaciente'),
     phone: get('#telefonoPaciente'),
+    coverage: get('input[name="cobertura"]:checked'),
+    treatment: get('#tratamientoSeleccionado'),
     details: get('#mensajePaciente'),
     submit: get('#enviarFormulario'),
     nameError: get('#errorNombre'),
@@ -79,6 +81,8 @@ const initModal = () => {
   const clearForm = () => {
     ui.name.value = '';
     ui.phone.value = '';
+    modal.querySelector('input[name="cobertura"][value="Particular"]').checked = true;
+    ui.treatment.value = '';
     ui.details.value = '';
     ui.commentError.textContent = '';
     Object.values(fields).forEach((field) => setError(field));
@@ -105,14 +109,21 @@ const initModal = () => {
     await animate(next, [{ opacity: 0, transform: `translateX(${16 * direction}px)` }, { opacity: 1, transform: 'translateX(0)' }], { duration: 260, easing: 'cubic-bezier(.22,1,.36,1)' });
   };
 
-  const openModal = () => {
+  const openModal = (treatment = '') => {
     if (modal.style.display === 'flex') return;
     previousFocus = document.activeElement;
-    selectedTreatment = '';
+    selectedTreatment = treatment;
     clearForm();
-    ui.step1.style.display = 'block';
-    ui.step2.style.display = 'none';
-    ui.progress.style.width = '50%';
+    const hasSelectedTreatment = Boolean(treatment && descriptions[treatment]);
+    ui.step1.style.display = hasSelectedTreatment ? 'none' : 'block';
+    ui.step2.style.display = hasSelectedTreatment ? 'block' : 'none';
+    ui.progress.style.width = hasSelectedTreatment ? '100%' : '50%';
+    modal.setAttribute('aria-labelledby', hasSelectedTreatment ? 'tituloTratamiento' : 'modalStep1Title');
+    if (hasSelectedTreatment) {
+      ui.title.textContent = treatment;
+      ui.description.textContent = descriptions[treatment];
+      ui.treatment.value = treatment;
+    }
     ui.box.scrollTop = 0;
     modal.style.display = 'flex';
     modal.setAttribute('aria-hidden', 'false');
@@ -120,7 +131,7 @@ const initModal = () => {
     document.body.style.overflow = 'hidden';
     animate(modal, [{ opacity: 0 }, { opacity: 1 }], { duration: 180, easing: 'ease-out' });
     animate(ui.box, [{ opacity: 0, transform: 'translateY(24px) scale(.97)' }, { opacity: 1, transform: 'translateY(0) scale(1)' }], { duration: 300, easing: 'cubic-bezier(.22,1,.36,1)' });
-    window.setTimeout(() => ui.close.focus(), 40);
+    window.setTimeout(() => (hasSelectedTreatment ? ui.name : ui.close).focus(), 40);
   };
 
   const closeModal = async () => {
@@ -142,6 +153,7 @@ const initModal = () => {
     selectedTreatment = treatment;
     ui.title.textContent = treatment;
     ui.description.textContent = descriptions[treatment] ?? descriptions['Agendar Consulta'];
+    ui.treatment.value = treatment;
     ui.progress.style.width = '100%';
     modal.setAttribute('aria-labelledby', 'tituloTratamiento');
     await showStep(ui.step2);
@@ -165,7 +177,7 @@ const initModal = () => {
   document.querySelectorAll('.btn-nav, .hero .btn-primary, .abrir-modal').forEach((button) => {
     button.addEventListener('click', (event) => {
       event.preventDefault();
-      openModal();
+      openModal(button.dataset.modalTreatment ?? '');
     });
   });
 
@@ -186,12 +198,14 @@ const initModal = () => {
     }
 
     const comment = ui.details.value.trim();
+    const coverage = modal.querySelector('input[name="cobertura"]:checked')?.value ?? 'Particular';
     const message = [
       'Hola. Quisiera hablar con un especialista.',
       '',
       `Tratamiento: ${selectedTreatment}`,
       `Nombre: ${ui.name.value.trim()}`,
       `Teléfono: ${ui.phone.value.trim()}`,
+      `Cobertura: ${coverage}`,
       `Comentario: ${comment || 'Sin comentarios adicionales.'}`
     ].join('\n');
     openWhatsApp(message);

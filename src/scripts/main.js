@@ -17,6 +17,15 @@ import './modal.js';
       if (!container) return;
 
       const items = [...container.querySelectorAll(itemSelector)];
+      const managesPanelFocus = containerSelector === ".services-grid";
+      const setPanelFocus = (panel, isEnabled) => {
+        if (!managesPanelFocus) return;
+        panel.setAttribute("aria-hidden", String(!isEnabled));
+        panel.querySelectorAll("a, button, input, select, textarea").forEach((control) => {
+          if (isEnabled) control.removeAttribute("tabindex");
+          else control.setAttribute("tabindex", "-1");
+        });
+      };
       const closeItem = (item) => {
         const trigger = item.querySelector(triggerSelector);
         const panel = item.querySelector(panelSelector);
@@ -25,6 +34,7 @@ import './modal.js';
         panel.classList.remove("is-open");
         panel.style.maxHeight = "0px";
         item.classList.remove("is-expanded");
+        setPanelFocus(panel, false);
       };
       const openItem = (item) => {
         const trigger = item.querySelector(triggerSelector);
@@ -34,6 +44,7 @@ import './modal.js';
         panel.classList.add("is-open");
         panel.style.maxHeight = `${panel.scrollHeight}px`;
         item.classList.add("is-expanded");
+        setPanelFocus(panel, true);
       };
 
       items.forEach((item, index) => {
@@ -44,6 +55,7 @@ import './modal.js';
         trigger.setAttribute("aria-controls", panel.id);
         panel.setAttribute("role", "region");
         panel.style.maxHeight = "0px";
+        setPanelFocus(panel, false);
         trigger.addEventListener("click", () => {
           const willOpen = trigger.getAttribute("aria-expanded") !== "true";
           items.forEach((otherItem) => {

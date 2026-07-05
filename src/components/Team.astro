@@ -8,53 +8,34 @@ import { teamMembers } from '../data/team.js';
       <span class="section-tag">NUESTRO EQUIPO</span>
       <h2>Experiencia clínica, trato humano</h2>
       <p class="section-description">
-        Profesionales que combinan formación continua, criterio clínico y una atención
-        cercana para acompañarte en cada etapa del tratamiento.
+        Un equipo que trabaja de manera coordinada, con criterio profesional y una
+        atención cercana en cada etapa.
       </p>
     </header>
 
     <div class="team-list">
       {teamMembers.map((member) => (
-        <article class="doctor-card" data-profile={member.id} tabindex="0">
+        <article class="doctor-card">
           <div class="doctor-portrait">
             <img src={member.image} alt={member.alt} loading="lazy" />
-            <span class="doctor-experience">{member.experience} de experiencia</span>
           </div>
 
           <div class="doctor-info">
             <div class="doctor-identity">
-              <p class="doctor-specialty">{member.specialty}</p>
               <h3>{member.name}</h3>
               <p class="doctor-registration">{member.registration}</p>
             </div>
 
+            <span class="doctor-experience">{member.experience} de experiencia</span>
             <p class="doctor-description">{member.description}</p>
-
-            <ul class="doctor-strengths" aria-label={`Fortalezas de ${member.name}`}>
-              {member.profile.highlights.map((highlight) => (
-                <li>
-                  <svg viewBox="0 0 20 20" aria-hidden="true">
-                    <path d="m5.5 10.2 2.8 2.8 6.2-6.3"></path>
-                  </svg>
-                  <span>{highlight}</span>
-                </li>
-              ))}
-            </ul>
-
-            <button class="profile-button cta-secondary" type="button" aria-label={`Conocer el perfil de ${member.name}`}>
-              Ver perfil profesional
-              <svg viewBox="0 0 20 20" aria-hidden="true">
-                <path d="M4 10h11M11 6l4 4-4 4"></path>
-              </svg>
-            </button>
           </div>
         </article>
       ))}
     </div>
 
     <p class="demo-data-note">
-      *Imágenes, matrículas, años de experiencia y perfiles ilustrativos. Reemplazar con
-      la información real del equipo antes de publicar.
+      *Imágenes, matrículas y años de experiencia ilustrativos. Reemplazar con la
+      información real del equipo antes de publicar.
     </p>
   </div>
 </section>

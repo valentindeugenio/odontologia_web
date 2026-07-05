@@ -50,10 +50,11 @@ import { treatments } from '../data/treatments.js';
             ) : (
               <>
                 <button
-                  class="service-toggle"
+                  class="service-toggle abrir-modal"
                   type="button"
                   aria-expanded="false"
                   aria-controls={treatment.detailsId}
+                  data-modal-treatment={treatment.title}
                 >
                   <span class="service-toggle-label">Ver detalles</span>
                   <span class="service-toggle-icon" aria-hidden="true">
@@ -69,7 +70,11 @@ import { treatments } from '../data/treatments.js';
                       {treatment.bulletPoints.map((point) => <li>{point}</li>)}
                     </ul>
                     <p>{treatment.footer}</p>
-                    <button class="service-details-cta abrir-modal cta-secondary" type="button">
+                    <button
+                      class="service-details-cta abrir-modal cta-secondary"
+                      type="button"
+                      data-modal-treatment={treatment.title}
+                    >
                       Agendar evaluación
                       <span aria-hidden="true">→</span>
                     </button>

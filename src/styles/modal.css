@@ -21,7 +21,7 @@
   position: relative;
   width: min(900px, 95vw);
   max-height: min(90vh, 800px);
-  padding: 60px 64px 52px;
+  padding: 56px 60px 48px;
   overflow-x: hidden;
   overflow-y: auto;
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -34,22 +34,14 @@
     0 30px 70px rgba(6, 20, 31, 0.18),
     0 10px 30px rgba(6, 20, 31, 0.06),
     inset 0 1px 0 rgba(255, 255, 255, 0.6);
-  scrollbar-color: #c9d8df transparent;
-  scrollbar-width: thin;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-/* Scrollbar personalizado */
 .modal-box::-webkit-scrollbar {
-  width: 6px;
-}
-
-.modal-box::-webkit-scrollbar-thumb {
-  border-radius: 999px;
-  background: #c9d8df;
-}
-
-.modal-box::-webkit-scrollbar-thumb:hover {
-  background: #b0c5cf;
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 /* 2. BARRA DE PROGRESO E INDICADORES
@@ -80,8 +72,8 @@
   top: 24px;
   right: 24px;
   display: grid;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   place-items: center;
   border: 1px solid rgba(14, 90, 138, 0.08);
   border-radius: 50%;
@@ -385,7 +377,7 @@
    ========================================================================== */
 .modal-step-heading {
   max-width: 600px;
-  margin: 0 auto 32px;
+  margin: 0 auto 30px;
   text-align: center;
 }
 
@@ -409,12 +401,16 @@
   display: grid;
   max-width: 540px;
   margin: 0 auto;
-  gap: 20px;
+  gap: 22px;
 }
 
 .modal-field {
   display: grid;
-  gap: 8px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  gap: 9px;
 }
 
 .campo-label {
@@ -449,6 +445,100 @@
     border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
     background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-form input[readonly] {
+  background: #f3f7f9;
+  color: #36515f;
+  cursor: default;
+}
+
+.coverage-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.coverage-option {
+  position: relative;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.coverage-option > input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.coverage-control {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  padding: 10px 14px;
+  border: 1.5px solid #d9e2e6;
+  border-radius: 14px;
+  background: #fdfefe;
+  color: #304b5a;
+  font-size: 13px;
+  font-weight: 700;
+  gap: 12px;
+  transition:
+    border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.coverage-option > input:checked + .coverage-control {
+  border-color: #0e5a8a;
+  background: #f5fafc;
+  box-shadow: 0 0 0 3px rgba(14, 90, 138, 0.07);
+}
+
+.coverage-option > input:focus-visible + .coverage-control {
+  border-color: #0e5a8a;
+  outline: 2px solid rgba(14, 90, 138, 0.2);
+  outline-offset: 3px;
+}
+
+.coverage-logo,
+.coverage-particular-icon {
+  display: grid;
+  width: 48px;
+  height: 30px;
+  flex: 0 0 48px;
+  place-items: center;
+  border-radius: 8px;
+}
+
+.coverage-logo {
+  padding: 7px 8px;
+  background: #0874a6;
+}
+
+.coverage-logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.coverage-particular-icon {
+  border: 1px solid rgba(14, 90, 138, 0.09);
+  background: #edf5f7;
+  color: #0e5a8a;
+}
+
+.coverage-particular-icon svg {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.65;
 }
 
 .modal-form input {
@@ -597,7 +687,7 @@
     width: 100%;
     max-width: none;
     max-height: 88vh;
-    padding: 40px 24px 32px;
+    padding: 42px 22px 30px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 24px 24px 0 0;
     box-shadow: 0 -15px 40px rgba(6, 20, 31, 0.12);
@@ -606,8 +696,8 @@
   .cerrar-modal {
     top: 16px;
     right: 16px;
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
   }
 
   .modal-heading {
@@ -671,6 +761,23 @@
 
   .modal-form {
     gap: 16px;
+  }
+
+  .coverage-options {
+    gap: 10px;
+  }
+
+  .coverage-control {
+    min-height: 54px;
+    padding: 9px 11px;
+    gap: 9px;
+  }
+
+  .coverage-logo,
+  .coverage-particular-icon {
+    width: 42px;
+    height: 28px;
+    flex-basis: 42px;
   }
 
   .modal-form input {
