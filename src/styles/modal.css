@@ -1,3 +1,9 @@
+/* ==========================================================================
+   ESTILOS PREMIUM - MODAL DE CONSULTA Y PERFILES
+   ========================================================================== */
+
+/* 1. BACKDROP Y CONTENEDOR PRINCIPAL
+   ========================================================================== */
 .modal {
   position: fixed;
   z-index: 999999;
@@ -5,167 +11,238 @@
   display: none;
   align-items: center;
   justify-content: center;
-  padding: 28px;
-  background: rgba(7, 24, 35, 0.76);
-  backdrop-filter: blur(15px);
+  padding: 24px;
+  background: rgba(6, 20, 31, 0.78);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
 }
 
 .modal-box {
   position: relative;
-  width: min(920px, 95vw);
-  max-height: min(90vh, 820px);
-  padding: 52px 54px 48px;
+  width: min(900px, 95vw);
+  max-height: min(90vh, 800px);
+  padding: 60px 64px 52px;
   overflow-x: hidden;
   overflow-y: auto;
-  border: 1px solid rgba(255, 255, 255, 0.52);
-  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 28px;
   background:
-    radial-gradient(circle at 100% 0, rgba(79, 164, 175, 0.09), transparent 25rem),
-    #fff;
-  box-shadow: 0 45px 130px rgba(3, 20, 30, 0.32);
-  scrollbar-color: #b9cbd3 transparent;
+    radial-gradient(circle at 100% 0%, rgba(79, 164, 175, 0.07), transparent 350px),
+    radial-gradient(circle at 0% 100%, rgba(14, 90, 138, 0.03), transparent 300px),
+    #ffffff;
+  box-shadow: 
+    0 30px 70px rgba(6, 20, 31, 0.18),
+    0 10px 30px rgba(6, 20, 31, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  scrollbar-color: #c9d8df transparent;
   scrollbar-width: thin;
 }
 
+/* Scrollbar personalizado */
 .modal-box::-webkit-scrollbar {
   width: 6px;
 }
 
 .modal-box::-webkit-scrollbar-thumb {
   border-radius: 999px;
-  background: #b9cbd3;
+  background: #c9d8df;
 }
 
+.modal-box::-webkit-scrollbar-thumb:hover {
+  background: #b0c5cf;
+}
+
+/* 2. BARRA DE PROGRESO E INDICADORES
+   ========================================================================== */
 .modal-progress {
   position: absolute;
   top: 0;
   right: 0;
   left: 0;
-  height: 4px;
+  height: 3px;
   overflow: hidden;
-  background: #e9f0f3;
+  background: #f0f4f6;
 }
 
 .modal-progress-bar {
   width: 50%;
   height: 100%;
-  background: linear-gradient(90deg, #0e5a8a, #59a7b2);
-  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  background: linear-gradient(90deg, #0e5a8a, #4facb7);
+  box-shadow: 0 1px 6px rgba(79, 172, 183, 0.4);
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* 3. BOTÓN CERRAR Y VOLVER
+   ========================================================================== */
 .cerrar-modal {
   position: absolute;
-  z-index: 3;
-  top: 20px;
-  right: 20px;
+  z-index: 10;
+  top: 24px;
+  right: 24px;
   display: grid;
-  width: 43px;
-  height: 43px;
+  width: 40px;
+  height: 40px;
   place-items: center;
   border: 1px solid rgba(14, 90, 138, 0.08);
   border-radius: 50%;
-  background: rgba(242, 247, 249, 0.94);
-  color: #476474;
+  background: rgba(255, 255, 255, 0.9);
+  color: #557080;
   cursor: pointer;
+  box-shadow: 0 2px 8px rgba(14, 90, 138, 0.04);
   transition:
-    color 0.25s ease,
-    background 0.25s ease,
-    transform 0.3s ease;
+    color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cerrar-modal svg {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
-  stroke-width: 1.7;
+  stroke-width: 2;
 }
 
 .cerrar-modal:hover {
   background: #0e5a8a;
-  color: white;
-  transform: rotate(90deg);
+  color: #ffffff;
+  border-color: #0e5a8a;
+  transform: rotate(90deg) scale(1.05);
+  box-shadow: 0 4px 12px rgba(14, 90, 138, 0.15);
 }
 
 .cerrar-modal:focus-visible,
 .volver:focus-visible,
 .tratamiento-card:focus-visible,
 .modal-turno:focus-visible {
-  outline: 3px solid rgba(14, 90, 138, 0.22);
+  outline: 2px solid #0e5a8a;
   outline-offset: 4px;
 }
 
+.volver {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0 24px;
+  padding: 6px 12px;
+  border: 1px solid rgba(14, 90, 138, 0.08);
+  border-radius: 100px;
+  background: rgba(242, 247, 249, 0.5);
+  color: #0e5a8a;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  gap: 8px;
+  cursor: pointer;
+  transition:
+    background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.volver svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.volver:hover {
+  background-color: rgba(14, 90, 138, 0.06);
+  border-color: rgba(14, 90, 138, 0.15);
+}
+
+.volver:hover svg {
+  transform: translateX(-4px);
+}
+
+/* 4. CABECERAS Y JERARQUÍA (PASO 1)
+   ========================================================================== */
 .modal-heading {
-  max-width: 650px;
-  margin: 3px auto 34px;
+  max-width: 680px;
+  margin: 0 auto 40px;
   text-align: center;
 }
 
 .modal-eyebrow {
-  display: block;
-  margin-bottom: 13px;
-  color: var(--primary);
-  font-size: 11px;
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(14, 90, 138, 0.06);
+  color: #0e5a8a;
+  font-size: 10px;
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 #step1 h2 {
-  margin: 0 0 14px;
-  color: #17384a;
-  font-size: clamp(2.15rem, 4vw, 3rem);
-  line-height: 1.08;
-  letter-spacing: -0.045em;
+  margin: 0 0 12px;
+  color: #0c2331;
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
 }
 
 #step1 .modal-heading > p {
   margin: 0;
-  color: #687984;
-  font-size: 16px;
-  line-height: 1.7;
+  color: #556975;
+  font-size: 15.5px;
+  line-height: 1.6;
 }
 
+/* 5. CUADRÍCULA DE TARJETAS (PASO 1)
+   ========================================================================== */
 .tratamientos-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 15px;
+  gap: 18px;
 }
 
 .tratamiento-card {
   position: relative;
   display: grid;
-  min-height: 154px;
-  grid-template-columns: 48px minmax(0, 1fr) 24px;
+  min-height: 160px;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  padding: 25px;
+  padding: 28px;
   overflow: hidden;
-  border: 1px solid #dde7eb;
+  border: 1px solid #e1ebef;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.92);
-  color: #1e4052;
-  gap: 17px;
+  background: #ffffff;
+  color: #1a323f;
+  gap: 20px;
   cursor: pointer;
-  box-shadow: 0 10px 30px rgba(19, 57, 78, 0.045);
+  box-shadow: 0 4px 16px rgba(12, 35, 49, 0.02);
   transition:
-    transform 0.28s ease,
-    border-color 0.28s ease,
-    box-shadow 0.28s ease,
-    background 0.28s ease;
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .tratamiento-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(14, 90, 138, 0.28);
-  background: #fff;
-  box-shadow: 0 18px 42px rgba(19, 57, 78, 0.1);
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(14, 90, 138, 0.22);
+  background-color: #fafdfd;
+  box-shadow: 
+    0 20px 40px rgba(12, 35, 49, 0.06),
+    0 1px 3px rgba(12, 35, 49, 0.02);
 }
 
 .tratamiento-card-featured {
-  border-color: rgba(14, 90, 138, 0.28);
+  border-color: rgba(14, 90, 138, 0.2);
   background:
-    linear-gradient(140deg, rgba(236, 247, 250, 0.88), transparent 65%),
-    #fff;
+    linear-gradient(135deg, rgba(236, 247, 250, 0.4), transparent 60%),
+    #ffffff;
 }
 
 .tratamiento-card-featured::before {
@@ -173,20 +250,25 @@
   top: 0;
   bottom: 0;
   left: 0;
-  width: 3px;
-  background: linear-gradient(180deg, #0e5a8a, #65aeba);
+  width: 4px;
+  background: linear-gradient(180deg, #0e5a8a, #4facb7);
   content: '';
 }
 
+/* Iconos de las Tarjetas */
 .icono {
   display: grid;
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   place-items: center;
-  border: 1px solid rgba(14, 90, 138, 0.08);
+  border: 1px solid rgba(14, 90, 138, 0.06);
   border-radius: 14px;
-  background: #eef6f8;
-  color: var(--primary);
+  background: #f0f7f9;
+  color: #0e5a8a;
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .icono svg {
@@ -196,68 +278,82 @@
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 1.55;
+  stroke-width: 1.6;
 }
 
 .tratamiento-card-featured .icono {
-  background: var(--primary);
-  color: white;
-  box-shadow: 0 9px 22px rgba(14, 90, 138, 0.16);
+  background: #0e5a8a;
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(14, 90, 138, 0.15);
 }
 
+.tratamiento-card:hover .icono {
+  transform: scale(1.05);
+}
+
+/* Información de las Tarjetas */
 .card-info {
   min-width: 0;
 }
 
 .card-info > span {
-  display: block;
-  margin-bottom: 5px;
-  color: var(--primary);
+  display: inline-block;
+  margin-bottom: 6px;
+  padding: 3px 8px;
+  border-radius: 100px;
+  background: #f4eae1;
+  color: #9c6c40;
   font-size: 9px;
   font-weight: 800;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
 .card-info h3 {
-  margin: 0 0 7px;
-  color: #1b3d4f;
+  margin: 0 0 6px;
+  color: #0c2331;
   font-size: 18px;
-  line-height: 1.25;
-  letter-spacing: -0.025em;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
 }
 
 .card-info p {
   margin: 0;
-  color: #6b7b85;
-  font-size: 12px;
-  line-height: 1.55;
+  color: #556975;
+  font-size: 12.5px;
+  line-height: 1.5;
 }
 
+/* Flecha de las Tarjetas */
 .card-arrow {
-  width: 19px;
-  height: 19px;
+  width: 18px;
+  height: 18px;
   fill: none;
-  stroke: #5b879a;
+  stroke: #869da9;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 1.6;
-  transition: transform 0.25s ease;
+  stroke-width: 2;
+  transition:
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    stroke 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .tratamiento-card:hover .card-arrow {
-  transform: translateX(3px);
+  stroke: #0e5a8a;
+  transform: translateX(4px);
 }
 
+/* Indicadores de confianza */
 .modal-trust {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 25px;
-  color: #71818b;
-  font-size: 11px;
-  font-weight: 650;
-  gap: 22px;
+  margin-top: 32px;
+  color: #6b7e8a;
+  font-size: 12px;
+  font-weight: 600;
+  gap: 24px;
 }
 
 .modal-trust > span {
@@ -267,11 +363,11 @@
 }
 
 .modal-trust > span + span::before {
-  width: 3px;
-  height: 3px;
-  margin-right: 10px;
+  width: 4px;
+  height: 4px;
+  margin-right: 12px;
   border-radius: 50%;
-  background: #8fa5af;
+  background: #a3b4bd;
   content: '';
 }
 
@@ -279,68 +375,41 @@
   width: 16px;
   height: 16px;
   fill: none;
-  stroke: #438d97;
+  stroke: #4facb7;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 1.6;
+  stroke-width: 2;
 }
 
-.volver {
-  display: inline-flex;
-  align-items: center;
-  margin: 0 0 18px;
-  padding: 5px 0;
-  border: 0;
-  background: none;
-  color: var(--primary);
-  font: inherit;
-  font-size: 13px;
-  font-weight: 800;
-  gap: 7px;
-  cursor: pointer;
-}
-
-.volver svg {
-  width: 17px;
-  height: 17px;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.7;
-  transition: transform 0.25s ease;
-}
-
-.volver:hover svg {
-  transform: translateX(-3px);
-}
-
+/* 6. FORMULARIO Y PASO 2
+   ========================================================================== */
 .modal-step-heading {
-  max-width: 620px;
-  margin: 0 auto 29px;
+  max-width: 600px;
+  margin: 0 auto 32px;
   text-align: center;
 }
 
 .modal-step-heading h2 {
-  margin: 10px 0 11px;
-  color: #17384a;
-  font-size: clamp(2rem, 4vw, 2.65rem);
-  line-height: 1.12;
-  letter-spacing: -0.04em;
+  margin: 10px 0 10px;
+  color: #0c2331;
+  font-size: clamp(1.85rem, 3.2vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
 .modal-step-heading p {
   margin: 0;
-  color: #687984;
+  color: #556975;
   font-size: 15px;
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 .modal-form {
   display: grid;
-  max-width: 610px;
+  max-width: 540px;
   margin: 0 auto;
-  gap: 17px;
+  gap: 20px;
 }
 
 .modal-field {
@@ -352,159 +421,202 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0;
-  color: #244657;
+  margin: 0 4px;
+  color: #0c2331;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .campo-label > span {
-  color: #8b98a1;
+  color: #8fa0aa;
   font-size: 10px;
-  font-weight: 650;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
 }
 
+/* Campos de entrada */
 .modal-form input,
 .modal-form textarea {
   width: 100%;
-  border: 1px solid #d6e1e6;
+  border: 1.5px solid #d9e2e6;
   border-radius: 14px;
-  background: #fbfcfd;
-  color: #17384a;
+  background: #fdfefe;
+  color: #0c2331;
   font: inherit;
-  font-size: 15px;
+  font-size: 14.5px;
   transition:
-    border-color 0.22s ease,
-    background 0.22s ease,
-    box-shadow 0.22s ease;
+    border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .modal-form input {
   min-height: 52px;
-  padding: 13px 16px;
+  padding: 14px 18px;
 }
 
 .modal-form textarea {
-  min-height: 102px;
-  padding: 14px 16px;
+  min-height: 110px;
+  padding: 16px 18px;
   resize: vertical;
 }
 
 .modal-form input::placeholder,
 .modal-form textarea::placeholder {
-  color: #96a3aa;
+  color: #8fa0aa;
 }
 
 .modal-form input:hover,
 .modal-form textarea:hover {
-  border-color: #b8ccd5;
-  background: #fff;
+  border-color: #b3c2ca;
 }
 
 .modal-form input:focus,
 .modal-form textarea:focus {
   outline: none;
-  border-color: var(--primary);
-  background: #fff;
-  box-shadow: 0 0 0 4px rgba(14, 90, 138, 0.11);
+  border-color: #0e5a8a;
+  background-color: #ffffff;
+  box-shadow: 
+    0 0 0 4px rgba(14, 90, 138, 0.08),
+    0 1px 2px rgba(0, 0, 0, 0.02);
 }
 
+/* Errores */
 .modal-form input.input-error,
 .modal-form textarea.input-error {
-  border-color: #c94343;
-  background: #fffafa;
-  box-shadow: 0 0 0 4px rgba(201, 67, 67, 0.08);
+  border-color: #d14343;
+  background-color: #fffcfc;
+}
+
+.modal-form input.input-error:focus,
+.modal-form textarea.input-error:focus {
+  box-shadow: 0 0 0 4px rgba(209, 67, 67, 0.08);
 }
 
 .error {
   min-height: 0;
-  margin: -2px 0 0;
-  color: #bd3535;
-  font-size: 11px;
-  font-weight: 650;
-  line-height: 1.35;
+  margin: 2px 0 0 4px;
+  color: #d14343;
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  animation: slideInError 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideInError {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .error:empty {
   display: none;
 }
 
+/* 7. BOTÓN PRINCIPAL DE CONSULTA (CTA)
+   ========================================================================== */
 .modal-turno {
   display: inline-flex;
   width: 100%;
   min-height: 54px;
   align-items: center;
   justify-content: center;
-  margin-top: 3px;
-  padding: 14px 22px;
+  margin-top: 8px;
+  padding: 14px 28px;
   border: 0;
   border-radius: 14px;
-  background: linear-gradient(100deg, #0e5a8a, #226f92);
-  color: white;
+  background: linear-gradient(135deg, #0e5a8a, #16689b);
+  color: #ffffff;
   font: inherit;
-  font-size: 14px;
-  font-weight: 800;
+  font-size: 14.5px;
+  font-weight: 700;
   gap: 10px;
-  box-shadow: 0 15px 34px rgba(14, 90, 138, 0.2);
+  box-shadow: 
+    0 10px 24px rgba(14, 90, 138, 0.18),
+    0 2px 4px rgba(14, 90, 138, 0.06);
   cursor: pointer;
   transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .modal-turno:hover {
   transform: translateY(-2px);
-  box-shadow: 0 20px 40px rgba(14, 90, 138, 0.26);
+  box-shadow: 
+    0 15px 30px rgba(14, 90, 138, 0.24),
+    0 4px 8px rgba(14, 90, 138, 0.1);
+  filter: brightness(1.03);
+}
+
+.modal-turno:active {
+  transform: translateY(0);
+  box-shadow: 
+    0 8px 16px rgba(14, 90, 138, 0.18),
+    0 2px 4px rgba(14, 90, 138, 0.06);
 }
 
 .modal-turno svg {
-  width: 17px;
-  height: 17px;
+  width: 16px;
+  height: 16px;
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-width: 1.7;
+  stroke-width: 2;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-turno:hover svg {
+  transform: translateX(4px);
 }
 
 .modal-form-note {
-  margin: -6px 0 0;
-  color: #84919a;
-  font-size: 10px;
+  margin: 12px 0 0;
+  color: #7b8e9b;
+  font-size: 11px;
   line-height: 1.5;
   text-align: center;
 }
 
-@media (max-width: 680px) {
+/* 8. OPTIMIZACIÓN RESPONSIVA
+   ========================================================================== */
+@media (max-width: 768px) {
   .modal {
     align-items: flex-end;
-    padding: 10px;
+    padding: 0;
   }
 
   .modal-box {
     width: 100%;
     max-width: none;
-    max-height: calc(100dvh - 20px);
-    padding: 43px 20px 30px;
-    border-radius: 24px 24px 18px 18px;
+    max-height: 88vh;
+    padding: 40px 24px 32px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px 24px 0 0;
+    box-shadow: 0 -15px 40px rgba(6, 20, 31, 0.12);
   }
 
   .cerrar-modal {
-    top: 13px;
-    right: 14px;
-    width: 39px;
-    height: 39px;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
   }
 
   .modal-heading {
-    margin-bottom: 26px;
-    padding: 0 22px;
+    margin-bottom: 28px;
+    padding: 0 16px;
   }
 
   #step1 h2 {
-    font-size: 2rem;
+    font-size: 1.85rem;
   }
 
   #step1 .modal-heading > p {
@@ -513,15 +625,15 @@
 
   .tratamientos-grid {
     grid-template-columns: 1fr;
-    gap: 11px;
+    gap: 12px;
   }
 
   .tratamiento-card {
-    min-height: 118px;
-    grid-template-columns: 44px minmax(0, 1fr) 20px;
-    padding: 19px;
-    border-radius: 17px;
-    gap: 14px;
+    min-height: auto;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    padding: 20px;
+    border-radius: 16px;
+    gap: 16px;
   }
 
   .icono {
@@ -529,106 +641,413 @@
     height: 44px;
   }
 
+  .icono svg {
+    width: 20px;
+    height: 20px;
+  }
+
   .card-info h3 {
     font-size: 16px;
   }
 
   .card-info p {
-    font-size: 11px;
+    font-size: 12px;
   }
 
   .modal-trust {
-    margin-top: 20px;
-    gap: 12px;
+    margin-top: 24px;
+    gap: 16px;
+    flex-wrap: wrap;
   }
 
   .modal-step-heading {
     margin-bottom: 24px;
-    padding: 0 8px;
+    padding: 0;
   }
 
   .modal-step-heading h2 {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 
   .modal-form {
-    gap: 15px;
+    gap: 16px;
   }
 
   .modal-form input {
-    min-height: 50px;
+    min-height: 48px;
+  }
+}
+
+/* Unified call-to-action system */
+.cta-primary.cta-primary,
+.cta-secondary.cta-secondary {
+  position: relative;
+  display: inline-flex;
+  min-height: 50px;
+  max-width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 21px;
+  border-radius: 13px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-align: center;
+  text-decoration: none;
+  gap: 9px;
+  cursor: pointer;
+  transition:
+    color 220ms ease,
+    background-color 220ms ease,
+    border-color 220ms ease,
+    box-shadow 240ms ease,
+    transform 220ms ease;
+}
+
+.cta-primary.cta-primary {
+  border: 1px solid rgba(7, 63, 96, 0.18);
+  background: linear-gradient(105deg, #0b4f77, #12688f);
+  color: #fff;
+  box-shadow:
+    0 13px 28px rgba(7, 63, 96, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+.cta-secondary.cta-secondary {
+  border: 1px solid rgba(14, 90, 138, 0.2);
+  background: rgba(255, 255, 255, 0.84);
+  color: #0e5a8a;
+  box-shadow:
+    0 8px 22px rgba(19, 57, 78, 0.055),
+    inset 0 1px 0 rgba(255, 255, 255, 0.76);
+  backdrop-filter: blur(10px);
+}
+
+.cta-primary.cta-primary:hover {
+  border-color: rgba(7, 63, 96, 0.26);
+  background: linear-gradient(105deg, #0a4569, #0f729c);
+  box-shadow:
+    0 17px 36px rgba(7, 63, 96, 0.27),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+}
+
+.cta-secondary.cta-secondary:hover {
+  border-color: rgba(14, 90, 138, 0.34);
+  background: #f1f8fa;
+  color: #0a4a70;
+  box-shadow: 0 12px 28px rgba(19, 57, 78, 0.09);
+  transform: translateY(-2px);
+}
+
+.cta-primary.cta-primary:focus-visible,
+.cta-secondary.cta-secondary:focus-visible {
+  outline: 3px solid rgba(54, 165, 198, 0.38);
+  outline-offset: 4px;
+}
+
+.cta-primary.cta-primary:active,
+.cta-secondary.cta-secondary:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+.cta-primary.cta-primary:disabled,
+.cta-secondary.cta-secondary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.cta-primary.cta-primary svg,
+.cta-secondary.cta-secondary svg {
+  flex: 0 0 auto;
+  transition: transform 220ms ease;
+}
+
+.cta-primary.cta-primary:hover svg,
+.cta-secondary.cta-secondary:hover svg {
+  transform: translateX(3px);
+}
+
+.hero .cta-primary.cta-primary {
+  border-color: rgba(255, 255, 255, 0.82);
+  background: #fff;
+  color: #082f47;
+  box-shadow: 0 13px 32px rgba(0, 0, 0, 0.22);
+}
+
+.hero .cta-primary.cta-primary:hover {
+  background: #f4fbfd;
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+}
+
+.hero .cta-secondary.cta-secondary {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.96);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.hero .cta-secondary.cta-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.46);
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.navbar .cta-primary.cta-primary {
+  min-height: 46px;
+  padding: 11px 17px;
+  border-radius: 11px;
+  font-size: 12px;
+}
+
+.service-card-booking .cta-primary.cta-primary {
+  border-color: rgba(255, 255, 255, 0.9);
+  background: #fff;
+  color: #0d3c57;
+  box-shadow: 0 12px 28px rgba(3, 22, 33, 0.2);
+}
+
+.service-card-booking .cta-primary.cta-primary:hover {
+  background: #f3fbfc;
+  box-shadow: 0 16px 34px rgba(3, 22, 33, 0.27);
+}
+
+.modal-turno.cta-primary {
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .cta-primary.cta-primary,
+  .cta-secondary.cta-secondary {
+    width: 100%;
+    min-height: 52px;
+    padding-inline: 18px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .modal-progress-bar,
-  .cerrar-modal,
-  .tratamiento-card,
-  .card-arrow,
-  .volver svg,
-  .modal-form input,
-  .modal-form textarea,
-  .modal-turno {
+  .cta-primary.cta-primary,
+  .cta-secondary.cta-secondary,
+  .cta-primary.cta-primary svg,
+  .cta-secondary.cta-secondary svg {
     transition: none;
   }
 }
 
+/* 9. REDUCED MOTION (ACCESIBILIDAD)
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .modal-progress-bar,
+  .cerrar-modal,
+  .tratamiento-card,
+  .icono,
+  .card-arrow,
+  .volver svg,
+  .modal-form input,
+  .modal-form textarea,
+  .modal-turno,
+  .modal-turno svg,
+  .error {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/* ==========================================================================
+   10. PERFIL DE PROFESIONALES (COHERENCIA DE MARCA)
+   ========================================================================== */
 .profile-dialog {
   margin: auto;
-  border: 0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 28px;
   padding: 0;
-  width: min(960px, 92vw);
+  width: min(920px, 92vw);
+  background: #ffffff;
+  box-shadow: 
+    0 30px 70px rgba(6, 20, 31, 0.2),
+    0 10px 30px rgba(6, 20, 31, 0.08);
+  overflow: hidden;
 }
 
 .profile-dialog::backdrop {
-  background: rgba(8, 17, 27, 0.7);
+  background: rgba(6, 20, 31, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .profile-close {
   position: absolute;
+  z-index: 10;
   top: 22px;
   right: 22px;
-  width: 44px;
-  height: 44px;
-  border: 0;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(14, 90, 138, 0.08);
   border-radius: 50%;
-  background: #F4F7FA;
-  color: var(--text);
-  font-size: 24px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #557080;
+  font-size: 20px;
+  display: grid;
+  place-items: center;
   cursor: pointer;
+  transition: 
+    background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.profile-close:hover {
+  background-color: #0e5a8a;
+  color: #ffffff;
+  transform: scale(1.05);
 }
 
 .profile-dialog-grid {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
-  gap: 36px;
-  padding: 40px;
+  gap: 40px;
+  padding: 44px;
+  align-items: center;
 }
 
 .profile-dialog-grid img {
   width: 100%;
-  border-radius: 24px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(12, 35, 49, 0.06);
+  object-fit: cover;
+  aspect-ratio: 4 / 5;
+}
+
+.profile-dialog-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-dialog-content .section-tag {
+  display: inline-block;
+  align-self: flex-start;
+  margin-bottom: 12px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(79, 172, 183, 0.08);
+  color: #3b8a95;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.profile-dialog-content h2 {
+  margin: 0 0 6px;
+  color: #0c2331;
+  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.2;
 }
 
 .profile-specialty {
-  color: var(--primary);
+  color: #0e5a8a;
+  font-size: 16px;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .profile-years {
-  display: flex;
-  gap: 8px;
+  display: inline-flex;
   align-items: center;
-  margin-bottom: 16px;
-  font-size: 18px;
-  color: #444;
+  gap: 6px;
+  margin-bottom: 18px;
+  font-size: 14px;
+  color: #556975;
+}
+
+.profile-years strong {
+  color: #0c2331;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.profile-dialog-content p {
+  color: #556975;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 16px;
 }
 
 .profile-highlights {
-  margin-top: 18px;
-  padding-left: 20px;
-  color: #666;
-  line-height: 1.8;
+  margin: 0 0 24px;
+  padding-left: 18px;
+  color: #556975;
+  font-size: 13.5px;
+  line-height: 1.7;
+}
+
+.profile-highlights li {
+  margin-bottom: 6px;
+}
+
+.profile-booking {
+  align-self: flex-start;
+  min-height: 48px;
+  padding: 12px 28px;
+  border: 0;
+  border-radius: 12px;
+  background: #0e5a8a;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(14, 90, 138, 0.15);
+  transition: 
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.profile-booking:hover {
+  background-color: #126ba3;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(14, 90, 138, 0.22);
+}
+
+.profile-booking:active {
+  transform: translateY(0);
+}
+
+.profile-dialog-content small {
+  margin-top: 12px;
+  font-size: 10px;
+  color: #9cb1bc;
+}
+
+@media (max-width: 768px) {
+  .profile-dialog {
+    width: min(480px, 92vw);
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+
+  .profile-dialog-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 32px 24px;
+  }
+
+  .profile-dialog-grid img {
+    aspect-ratio: 1;
+    max-height: 220px;
+    width: auto;
+    margin: 0 auto;
+  }
+
+  .profile-booking {
+    width: 100%;
+    text-align: center;
+  }
 }

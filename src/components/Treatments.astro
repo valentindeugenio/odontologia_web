@@ -39,8 +39,8 @@ import { treatments } from '../data/treatments.js';
             {treatment.kind === 'booking' ? (
               <div class="service-booking-content">
                 <p>Elegí el motivo de tu consulta y contanos brevemente qué necesitás.</p>
-                <button class="service-booking-button abrir-modal" type="button">
-                  Agendar ahora
+                <button class="service-booking-button abrir-modal cta-primary" type="button">
+                  Agendar una consulta
                   <svg viewBox="0 0 20 20" aria-hidden="true">
                     <path d="M4 10h11M11 6l4 4-4 4"></path>
                   </svg>
@@ -69,8 +69,8 @@ import { treatments } from '../data/treatments.js';
                       {treatment.bulletPoints.map((point) => <li>{point}</li>)}
                     </ul>
                     <p>{treatment.footer}</p>
-                    <button class="service-details-cta abrir-modal" type="button">
-                      Agendar una evaluación
+                    <button class="service-details-cta abrir-modal cta-secondary" type="button">
+                      Agendar evaluación
                       <span aria-hidden="true">→</span>
                     </button>
                   </div>
