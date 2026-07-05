@@ -3,16 +3,46 @@ import { faqItems } from '../data/faq.js';
 ---
 
 <section class="faq" id="faq">
-  <div class="container">
-    <span class="section-tag">PREGUNTAS FRECUENTES</span>
-    <h2>Resolvemos tus dudas</h2>
+  <div class="container faq-section-container">
+    <header class="faq-heading">
+      <div>
+        <span class="section-tag">PREGUNTAS FRECUENTES</span>
+        <h2>Información clara para decidir con confianza</h2>
+      </div>
+      <p>
+        Respondemos las dudas más habituales para que sepas qué esperar antes, durante
+        y después de tu tratamiento.
+      </p>
+    </header>
+
     <div class="faq-container">
-      {faqItems.map((item) => (
+      {faqItems.map((item, index) => (
         <div class="faq-item">
-          <button class="faq-question" type="button" aria-expanded="false">{item.question}<span>+</span></button>
-          <div class="faq-answer"><p>{item.answer}</p></div>
+          <button class="faq-question" type="button" aria-expanded="false">
+            <span class="faq-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+            <span class="faq-question-text">{item.question}</span>
+            <span class="faq-toggle-icon" aria-hidden="true">
+              <span></span>
+              <span></span>
+            </span>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p>{item.answer}</p>
+            </div>
+          </div>
         </div>
       ))}
+    </div>
+
+    <div class="faq-cta">
+      <p>¿Todavía tenés alguna duda sobre tu caso?</p>
+      <button class="faq-cta-button abrir-modal" type="button">
+        Conversar con el equipo
+        <svg viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M4 10h11M11 6l4 4-4 4"></path>
+        </svg>
+      </button>
     </div>
   </div>
 </section>

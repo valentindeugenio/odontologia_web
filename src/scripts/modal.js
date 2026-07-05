@@ -1,13 +1,11 @@
 import { onReady } from './utils.js';
 
 const PHONE = '5491133932597';
-const URGENCY_MESSAGE = 'Hola. Tengo una urgencia odontológica y necesito atención lo antes posible.';
 const descriptions = {
   'Implantes Dentales': 'Contanos brevemente tu situación para recibir una orientación personalizada.',
   'Estética Dental': 'Comentanos qué cambio querés lograr en tu sonrisa.',
-  Endodoncia: 'Contanos qué molestias presents para que podamos orientarte mejor.',
   'Limpieza y Control': 'Solicitá un control o una limpieza preventiva.',
-  'Otra consulta': 'Contanos qué necesitás y te responderemos enseguida.'
+  'Agendar Consulta': 'Contanos qué necesitás y te ayudamos a coordinar el próximo paso.'
 };
 
 const initModal = () => {
@@ -103,6 +101,7 @@ const initModal = () => {
     await animate(current, [{ opacity: 1, transform: 'translateX(0)' }, { opacity: 0, transform: `translateX(${-16 * direction}px)` }], { duration: 150, easing: 'ease-out' });
     current.style.display = 'none';
     next.style.display = 'block';
+    ui.box.scrollTo({ top: 0, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
     await animate(next, [{ opacity: 0, transform: `translateX(${16 * direction}px)` }, { opacity: 1, transform: 'translateX(0)' }], { duration: 260, easing: 'cubic-bezier(.22,1,.36,1)' });
   };
 
@@ -114,6 +113,7 @@ const initModal = () => {
     ui.step1.style.display = 'block';
     ui.step2.style.display = 'none';
     ui.progress.style.width = '50%';
+    ui.box.scrollTop = 0;
     modal.style.display = 'flex';
     modal.setAttribute('aria-hidden', 'false');
     previousOverflow = document.body.style.overflow;
@@ -139,15 +139,9 @@ const initModal = () => {
 
   const selectTreatment = async (card) => {
     const treatment = card.dataset.tratamiento;
-    if (treatment === 'Urgencias') {
-      openWhatsApp(URGENCY_MESSAGE);
-      closeModal();
-      return;
-    }
-
     selectedTreatment = treatment;
     ui.title.textContent = treatment;
-    ui.description.textContent = descriptions[treatment] ?? descriptions['Otra consulta'];
+    ui.description.textContent = descriptions[treatment] ?? descriptions['Agendar Consulta'];
     ui.progress.style.width = '100%';
     modal.setAttribute('aria-labelledby', 'tituloTratamiento');
     await showStep(ui.step2);
@@ -156,8 +150,6 @@ const initModal = () => {
 
   cards.forEach((card) => {
     const treatment = card.dataset.tratamiento;
-    const urgent = treatment === 'Urgencias';
-    card.classList.toggle('urgente', urgent);
     card.setAttribute('role', 'button');
     card.setAttribute('tabindex', '0');
     card.setAttribute('aria-label', `${treatment}. Seleccionar tratamiento`);

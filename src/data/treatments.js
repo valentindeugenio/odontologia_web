@@ -1,9 +1,7 @@
 export const treatments = [
   {
     title: 'Implantes Dentales',
-    description: 'Reemplazamos piezas dentarias perdidas mediante implantes de alta calidad para devolver función y estética.',
-    image: '/images/implantes-ai.webp',
-    alt: 'Consulta profesional sobre implantes dentales',
+    description: 'Recuperá piezas perdidas con una solución fija, funcional y diseñada para sentirse natural.',
     detailsId: 'detalle-implantes',
     heading: '¿Cuándo conviene consultar?',
     bulletPoints: [
@@ -12,13 +10,13 @@ export const treatments = [
       'Tu prótesis removible se mueve o te incomoda.',
       'Querés conocer opciones fijas y duraderas.'
     ],
-    footer: 'En la primera consulta evaluamos tu salud bucal y los estudios necesarios para diseñar un plan personalizado.'
+    footer: 'Evaluamos tu salud bucal y los estudios necesarios para crear un plan preciso y personalizado.',
+    iconPath: 'M12 3.2c-2.1 0-2.8-1-4.7-1C4.8 2.2 3 4.4 3 7.1c0 2.2 1.2 3.7 1.8 5.5.8 2.3.8 6.8 3.1 8 2.2 1.1 2-4.7 4.1-4.7s1.9 5.8 4.1 4.7c2.3-1.2 2.3-5.7 3.1-8 .6-1.8 1.8-3.3 1.8-5.5 0-2.7-1.8-4.9-4.3-4.9-1.9 0-2.6 1-4.7 1Z',
+    featured: true
   },
   {
     title: 'Estética Dental',
-    description: 'Blanqueamientos y tratamientos estéticos para mejorar la apariencia natural de tu sonrisa.',
-    image: '/images/estetica-ai.webp',
-    alt: 'Evaluación de estética dental y color de la sonrisa',
+    description: 'Mejorá la armonía de tu sonrisa con tratamientos sutiles, naturales y pensados para vos.',
     detailsId: 'detalle-estetica',
     heading: '¿Qué podemos mejorar?',
     bulletPoints: [
@@ -27,36 +25,27 @@ export const treatments = [
       'Forma, tamaño y armonía general de la sonrisa.',
       'Restauraciones antiguas que ya no se ven naturales.'
     ],
-    footer: 'Analizamos tus expectativas y priorizamos resultados naturales que respeten tus rasgos.'
+    footer: 'Priorizamos resultados naturales que respeten tus rasgos y la salud de cada pieza.',
+    iconPath: 'm12 2 1.6 5.2L19 9l-5.4 1.8L12 16l-1.6-5.2L5 9l5.4-1.8L12 2Zm6.5 13 .7 2.3 2.3.7-2.3.7-.7 2.3-.7-2.3-2.3-.7 2.3-.7.7-2.3Z'
   },
   {
-    title: 'Endodoncia',
-    description: 'Tratamientos para conservar piezas dentarias dañadas y eliminar el dolor.',
-    image: '/images/endodoncia-ai.webp',
-    alt: 'Evaluación odontológica mediante una radiografía',
-    detailsId: 'detalle-endodoncia',
-    heading: 'Señales que requieren evaluación',
+    title: 'Limpieza y Control',
+    description: 'Prevención profesional para mantener dientes y encías saludables a lo largo del tiempo.',
+    detailsId: 'detalle-limpieza',
+    heading: 'Una consulta preventiva permite',
     bulletPoints: [
-      'Dolor persistente o al morder.',
-      'Sensibilidad intensa al frío o al calor.',
-      'Una caries profunda o una pieza fracturada.',
-      'Inflamación localizada o antecedentes de traumatismo.'
+      'Remover placa y sarro acumulados.',
+      'Detectar caries y problemas de encías a tiempo.',
+      'Revisar restauraciones y tratamientos previos.',
+      'Definir una rutina de cuidado adecuada para vos.'
     ],
-    footer: 'El objetivo es aliviar el dolor y conservar la pieza siempre que sea posible.'
+    footer: 'La frecuencia se adapta a tus necesidades y antecedentes para cuidar tu salud bucal a largo plazo.',
+    iconPath: 'M12 3 5 6v5c0 4.6 2.9 8.1 7 10 4.1-1.9 7-5.4 7-10V6l-7-3Zm-3 8 2 2 4-4'
   },
   {
-    title: 'Urgencias',
-    description: 'Atención rápida para resolver emergencias odontológicas y aliviar el dolor.',
-    image: '/images/urgencias-ai.webp',
-    alt: 'Recepción de una urgencia odontológica',
-    detailsId: 'detalle-urgencias',
-    heading: 'Consultá cuanto antes si tenés',
-    bulletPoints: [
-      'Dolor intenso o que no cede.',
-      'Inflamación en encías, cara o mandíbula.',
-      'Una pieza fracturada, floja o desplazada.',
-      'Sangrado persistente o un traumatismo reciente.'
-    ],
-    footer: 'Priorizamos controlar el dolor, evaluar la causa y definir el tratamiento indicado.'
+    title: 'Agendar Consulta',
+    description: 'Conversá con nuestro equipo y encontrá el próximo paso adecuado para tu salud bucal.',
+    kind: 'booking',
+    iconPath: 'M6 3v3m12-3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm3 8h3m2 0h3m-8 3h3'
   }
 ];

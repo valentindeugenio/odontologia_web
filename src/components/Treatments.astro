@@ -3,25 +3,80 @@ import { treatments } from '../data/treatments.js';
 ---
 
 <section class="services" id="tratamientos">
-  <div class="container">
-    <span class="section-tag">TRATAMIENTOS</span>
-    <h2>Soluciones odontológicas para recuperar tu sonrisa</h2>
-    <p class="section-description">Trabajamos con tratamientos modernos, planificación personalizada y materiales de primera calidad.</p>
+  <div class="container services-container">
+    <header class="services-heading">
+      <span class="section-tag">TRATAMIENTOS</span>
+      <h2>Soluciones precisas para cuidar tu sonrisa</h2>
+      <p class="section-description">
+        Un enfoque clínico personalizado, tecnología actual y decisiones explicadas con
+        claridad en cada etapa.
+      </p>
+    </header>
+
     <div class="services-grid">
       {treatments.map((treatment) => (
-        <article class="service-card">
-          <div class="service-image"><img src={treatment.image} alt={treatment.alt} loading="lazy" /></div>
+        <article
+          class:list={[
+            'service-card',
+            { 'service-card-featured': treatment.featured },
+            { 'service-card-booking': treatment.kind === 'booking' }
+          ]}
+        >
+          {treatment.featured && <span class="service-featured-label">Tratamiento destacado</span>}
+
           <div class="service-content">
-            <h3>{treatment.title}</h3>
-            <p>{treatment.description}</p>
-            <button class="service-toggle" type="button" aria-expanded="false" aria-controls={treatment.detailsId}>Más información <span aria-hidden="true">+</span></button>
-            <div class="service-details" id={treatment.detailsId}>
-              <h4>{treatment.heading}</h4>
-              <ul>
-                {treatment.bulletPoints.map((point) => <li>{point}</li>)}
-              </ul>
-              <p>{treatment.footer}</p>
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d={treatment.iconPath}></path>
+              </svg>
             </div>
+
+            <div class="service-copy">
+              <h3>{treatment.title}</h3>
+              <p>{treatment.description}</p>
+            </div>
+
+            {treatment.kind === 'booking' ? (
+              <div class="service-booking-content">
+                <p>Elegí el motivo de tu consulta y contanos brevemente qué necesitás.</p>
+                <button class="service-booking-button abrir-modal" type="button">
+                  Agendar ahora
+                  <svg viewBox="0 0 20 20" aria-hidden="true">
+                    <path d="M4 10h11M11 6l4 4-4 4"></path>
+                  </svg>
+                </button>
+                <small>Coordinación rápida y personalizada.</small>
+              </div>
+            ) : (
+              <>
+                <button
+                  class="service-toggle"
+                  type="button"
+                  aria-expanded="false"
+                  aria-controls={treatment.detailsId}
+                >
+                  <span class="service-toggle-label">Ver detalles</span>
+                  <span class="service-toggle-icon" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                  </span>
+                </button>
+
+                <div class="service-details" id={treatment.detailsId}>
+                  <div class="service-details-inner">
+                    <h4>{treatment.heading}</h4>
+                    <ul>
+                      {treatment.bulletPoints.map((point) => <li>{point}</li>)}
+                    </ul>
+                    <p>{treatment.footer}</p>
+                    <button class="service-details-cta abrir-modal" type="button">
+                      Agendar una evaluación
+                      <span aria-hidden="true">→</span>
+                    </button>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
         </article>
       ))}

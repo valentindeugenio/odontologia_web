@@ -1,13 +1,70 @@
 <section class="before-after" id="antes-despues">
-  <div class="container">
-    <span class="section-tag">RESULTADOS</span>
-    <h2>Antes y después</h2>
-    <p class="section-description">Cada tratamiento es planificado de forma personalizada para obtener resultados funcionales y estéticos.</p>
+  <div class="container before-after-container">
+    <header class="before-after-heading">
+      <div>
+        <span class="section-tag">RESULTADOS</span>
+        <h2>Un cambio que se ve.<br />Una confianza que se siente.</h2>
+      </div>
+      <p class="section-description">
+        Cada tratamiento parte de un diagnóstico preciso y se planifica de forma
+        personalizada, buscando resultados funcionales, armónicos y naturales.
+      </p>
+    </header>
+
     <figure class="result-comparison">
-      <img src="/images/antes-despues-ai.webp" alt="Comparación ilustrativa de una sonrisa antes y después de un tratamiento dental" loading="lazy" />
-      <span class="result-label result-label-before">ANTES</span>
-      <span class="result-label result-label-after">DESPUÉS</span>
-      <figcaption>Resultado ilustrativo generado con IA. Cada caso clínico es diferente y requiere evaluación profesional.</figcaption>
+      <div class="result-visual">
+        <div class="result-panel result-panel-before">
+          <img
+            src="/images/antes-despues-ai.webp"
+            alt="Sonrisa antes del tratamiento dental"
+            loading="lazy"
+          />
+          <span class="result-label result-label-before">
+            <small>Estado inicial</small>
+            Antes
+          </span>
+        </div>
+
+        <div class="result-panel result-panel-after">
+          <img
+            src="/images/antes-despues-ai.webp"
+            alt="Sonrisa después del tratamiento dental"
+            loading="lazy"
+          />
+          <span class="result-label result-label-after">
+            <small>Resultado</small>
+            Después
+          </span>
+        </div>
+
+        <div class="result-divider" aria-hidden="true">
+          <span>
+            <svg viewBox="0 0 20 20">
+              <path d="m8 6-4 4 4 4M12 6l4 4-4 4"></path>
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <figcaption>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 3 5 6v5c0 4.6 2.9 8.1 7 10 4.1-1.9 7-5.4 7-10V6l-7-3Zm-3 8 2 2 4-4"></path>
+        </svg>
+        <span>
+          Resultado ilustrativo generado con IA. Cada caso clínico es diferente y
+          requiere evaluación profesional.
+        </span>
+      </figcaption>
     </figure>
+
+    <div class="results-cta">
+      <p>¿Querés conocer qué tratamiento puede ayudarte?</p>
+      <button class="results-cta-button abrir-modal" type="button">
+        Agendar una evaluación
+        <svg viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M4 10h11M11 6l4 4-4 4"></path>
+        </svg>
+      </button>
+    </div>
   </div>
 </section>
