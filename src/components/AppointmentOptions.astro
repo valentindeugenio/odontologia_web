@@ -9,7 +9,14 @@ import { contactOptions } from '../data/contact.js';
     <p class="section-description">Seleccioná tu modalidad y te abrimos WhatsApp con el mensaje preparado para coordinar el turno.</p>
     <div class="coverage-grid">
       {contactOptions.map((option) => (
-        <a class={`coverage-card${option.featured ? ' coverage-card-featured' : ''}`} href={option.link} target="_blank" rel="noopener noreferrer"><span class="coverage-name">{option.title}</span><span>{option.detail}</span><strong>Agendar por WhatsApp →</strong></a>
+        <a class={`coverage-card${option.featured ? ' coverage-card-featured' : ''}`} href={option.link} target="_blank" rel="noopener noreferrer">
+          {option.title === 'OSDE' && (
+            <span class="coverage-osde-logo" aria-hidden="true"></span>
+          )}
+          <span class="coverage-name">{option.title}</span>
+          <span>{option.detail}</span>
+          <strong>Agendar por WhatsApp →</strong>
+        </a>
       ))}
     </div>
     <p class="coverage-note">La cobertura y las condiciones de atención se confirman al momento de solicitar el turno.</p>

@@ -7,12 +7,14 @@
 
 .coverage-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
 }
 
 .coverage-card {
+  position: relative;
   display: flex;
+  min-height: 230px;
   flex-direction: column;
   gap: 12px;
   padding: 28px;
@@ -31,6 +33,18 @@
 .coverage-name {
   font-size: 24px;
   font-weight: 800;
+}
+
+.coverage-osde-logo {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  display: block;
+  width: 76px;
+  height: 30px;
+  background: #0874a6;
+  -webkit-mask: url('/images/osde-logo.svg') center / contain no-repeat;
+  mask: url('/images/osde-logo.svg') center / contain no-repeat;
 }
 
 .coverage-note {
@@ -68,6 +82,7 @@
 .contact-grid {
   display: grid;
   grid-template-rows: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
   gap: 18px;
 }
 
@@ -81,7 +96,7 @@
   padding: 28px 30px;
   border: 1px solid rgba(14, 90, 138, 0.1);
   border-radius: 20px;
-  background: #fff;
+  background: #f9fbfc;
   color: var(--text);
   box-shadow: 0 10px 30px rgba(19, 57, 78, 0.05);
   transition:
@@ -155,6 +170,26 @@ a.contact-card:focus-visible {
 }
 
 @media (max-width: 900px) {
+  .coverage-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .office-heading,
+  .office-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .office-heading {
+    display: grid;
+    align-items: start;
+    gap: 30px;
+  }
+
+  .office-layout {
+    gap: 30px;
+  }
+
   .contact-card {
     width: 100%;
     min-height: 174px;
@@ -177,19 +212,31 @@ a.contact-card:focus-visible {
 }
 
 .footer {
-  padding-bottom: 60px;
+  padding: 0;
+  background: #f3f7f9;
 }
 
-.footer-grid {
+.footer .footer-grid {
   display: grid;
   grid-template-columns: 1.3fr 1fr 1fr;
-  gap: 24px;
-  padding-top: 40px;
+  align-items: start;
+  column-gap: clamp(42px, 6vw, 78px);
+  row-gap: 0;
+  padding-top: 112px;
+  padding-bottom: 72px;
 }
 
 .footer-brand h2,
 .footer-column h3 {
   margin-bottom: 16px;
+}
+
+.footer-brand {
+  max-width: 390px;
+}
+
+.footer-brand p + p {
+  margin-top: 12px;
 }
 
 .footer-brand p,
@@ -203,7 +250,58 @@ a.contact-card:focus-visible {
 .footer-column {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.footer-column a:focus-visible {
+  outline: 3px solid rgba(14, 90, 138, 0.2);
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+
+.footer-legal {
+  grid-column: 1 / -1;
+  margin-top: 52px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(35, 49, 61, 0.1);
+}
+
+@media (max-width: 900px) {
+  .footer .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 38px;
+    padding-top: 86px;
+    padding-bottom: 62px;
+  }
+
+  .footer-brand {
+    max-width: 520px;
+  }
+
+  .footer-column {
+    gap: 16px;
+  }
+
+  .footer-column a {
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .footer-legal {
+    grid-column: auto;
+    margin-top: 14px;
+    padding-top: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer .footer-grid {
+    gap: 34px;
+    padding-top: 76px;
+    padding-bottom: 54px;
+  }
 }
 
 .whatsapp-float {
@@ -217,11 +315,66 @@ a.contact-card:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 9px 24px rgba(18, 92, 52, 0.2);
   z-index: 999;
+  transition:
+    opacity 0.22s ease,
+    visibility 0.22s ease,
+    transform 0.22s ease,
+    box-shadow 0.22s ease;
 }
 
-.whatsapp-float img {
+.whatsapp-float svg {
+  display: block;
   width: 32px;
   height: 32px;
+  overflow: visible;
+}
+
+.whatsapp-mark-outline {
+  fill: none;
+  stroke: #fff;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.15;
+}
+
+.whatsapp-mark-phone {
+  fill: #fff;
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(18, 92, 52, 0.24);
+}
+
+.whatsapp-float:focus-visible {
+  outline: 3px solid rgba(14, 90, 138, 0.32);
+  outline-offset: 4px;
+}
+
+body:has(#consultaModal[aria-hidden='false']) .whatsapp-float {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .whatsapp-float {
+    right: 16px;
+    bottom: 82px;
+    width: 58px;
+    height: 58px;
+  }
+
+  .whatsapp-float svg {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-float {
+    transition: none;
+  }
 }
