@@ -1,4 +1,5 @@
 import './modal.js';
+import './hero-carousel.js';
 
 (() => {
   "use strict";
@@ -12,6 +13,8 @@ import './modal.js';
   };
 
   onReady(() => {
+    const revealObserver = new IntersectionObserver((entries, observer) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } }), { threshold: .12 });
+    document.querySelectorAll('.team-heading, .team-showcase, .doctor-card, .services-heading, .service-card, .reviews-heading, .review-card, .office-heading, .office-layout, .before-after-heading, .result-comparison, .footer-grid').forEach((element) => { element.classList.add('reveal'); revealObserver.observe(element); });
     const setupAccordion = ({ containerSelector, triggerSelector, panelSelector, itemSelector }) => {
       const container = document.querySelector(containerSelector);
       if (!container) return;
@@ -93,6 +96,32 @@ import './modal.js';
       setMenuOpen(isOpen);
     });
     mainNav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setMenuOpen(false)));
+
+    const focusTargets = {
+      '#equipo': '.team-showcase',
+      '#tratamientos': '.services-grid',
+      '#testimonios': '.review-grid',
+      '#consultorio': '.map-wrapper'
+    };
+    const scrollToSectionFocus = (hash, behavior) => {
+      const section = document.querySelector(hash);
+      const focus = section?.querySelector(focusTargets[hash]);
+      const navbar = document.querySelector('.navbar');
+      if (!section || !focus || !navbar) return;
+      const navHeight = navbar.getBoundingClientRect().height;
+      const available = window.innerHeight - navHeight;
+      const target = focus.getBoundingClientRect().top + window.scrollY;
+      const position = Math.max(0, target - navHeight - Math.max(0, (available - Math.min(focus.getBoundingClientRect().height, available)) / 2));
+      window.scrollTo({ top: position, behavior });
+    };
+    document.querySelectorAll('.navbar a[href^="#"]').forEach((link) => link.addEventListener('click', (event) => {
+      const hash = link.getAttribute('href');
+      if (!hash || !focusTargets[hash]) return;
+      event.preventDefault();
+      history.pushState(null, '', hash);
+      scrollToSectionFocus(hash, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth');
+    }));
+    if (focusTargets[window.location.hash]) requestAnimationFrame(() => scrollToSectionFocus(window.location.hash, 'auto'));
     document.addEventListener("click", (event) => {
       if (mainNav?.classList.contains("is-open") && !event.target.closest(".navbar")) {
         setMenuOpen(false);

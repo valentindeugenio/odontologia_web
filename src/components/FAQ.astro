@@ -1,5 +1,6 @@
 ---
 import { faqItems } from '../data/faq.js';
+import ContactCtaContent from './ContactCtaContent.astro';
 ---
 
 <section class="faq" id="faq">
@@ -37,11 +38,8 @@ import { faqItems } from '../data/faq.js';
 
     <div class="faq-cta">
       <p>¿Todavía tenés alguna duda sobre tu caso?</p>
-      <button class="faq-cta-button abrir-modal cta-secondary" type="button">
-        Resolver mi consulta
-        <svg viewBox="0 0 20 20" aria-hidden="true">
-          <path d="M4 10h11M11 6l4 4-4 4"></path>
-        </svg>
+      <button class="faq-cta-button abrir-modal cta-secondary contact-cta" type="button">
+        <ContactCtaContent label="Resolver mi consulta" />
       </button>
     </div>
   </div>

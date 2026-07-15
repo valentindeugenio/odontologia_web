@@ -34,5 +34,23 @@ export const teamMembers = [
       'Trabaja de manera coordinada con todo el equipo para brindar una experiencia profesional, humana y enfocada en las necesidades de cada paciente.',
     image: '/images/profesional-4-ai.webp',
     alt: 'Retrato ilustrativo de una profesional del equipo'
+  },
+  {
+    name: 'Secretaría',
+    role: 'Coordinación de turnos',
+    registration: '',
+    experience: '',
+    description: 'Acompaña la organización de turnos y la comunicación inicial para que cada consulta comience con claridad.',
+    image: null,
+    alt: ''
+  },
+  {
+    name: 'Asistencia',
+    role: 'Asistencia clínica',
+    registration: '',
+    experience: '',
+    description: 'Brinda apoyo al equipo durante la atención, cuidando cada detalle de la experiencia en consultorio.',
+    image: null,
+    alt: ''
   }
 ];

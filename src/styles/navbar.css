@@ -151,14 +151,6 @@
     box-shadow 220ms ease;
 }
 
-.navbar .nav-booking::after {
-  content: '→';
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1;
-  transition: transform 220ms ease;
-}
-
 .navbar .nav-booking:hover {
   background: #0a527b;
   box-shadow:
@@ -167,9 +159,6 @@
   transform: translateY(-2px);
 }
 
-.navbar .nav-booking:hover::after {
-  transform: translateX(3px);
-}
 
 .navbar .mobile-menu-toggle {
   display: none;

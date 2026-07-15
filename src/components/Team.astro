@@ -13,29 +13,34 @@ import { teamMembers } from '../data/team.js';
       </p>
     </header>
 
+    <article class="team-showcase">
+      <div class="team-showcase-visual" data-group-image="/images/equipo-grupal.png" role="img" aria-label="Espacio preparado para la futura fotografía grupal del equipo"></div>
+      <div class="team-showcase-copy">
+        <span>ATENCIÓN COORDINADA</span>
+        <h3>Un equipo preparado para acompañarte en cada etapa.</h3>
+        <p>Profesionales, secretaría y asistencia trabajando de manera integrada para ofrecer una experiencia clara, cercana y cuidada.</p>
+      </div>
+    </article>
+
     <div class="team-list">
       {teamMembers.map((member) => (
         <article class="doctor-card">
           <div class="doctor-portrait">
-            <img src={member.image} alt={member.alt} loading="lazy" />
+            {member.image ? <img src={member.image} alt={member.alt} loading="lazy" /> : <span class="doctor-placeholder" aria-hidden="true">{member.role}</span>}
           </div>
 
           <div class="doctor-info">
             <div class="doctor-identity">
               <h3>{member.name}</h3>
-              <p class="doctor-registration">{member.registration}</p>
+            <p class="doctor-registration">{member.role ?? member.registration}</p>
             </div>
 
-            <span class="doctor-experience">{member.experience} de experiencia</span>
+            {member.experience && <span class="doctor-experience">{member.experience} de experiencia</span>}
             <p class="doctor-description">{member.description}</p>
           </div>
         </article>
       ))}
     </div>
 
-    <p class="demo-data-note">
-      *Imágenes, matrículas y años de experiencia ilustrativos. Reemplazar con la
-      información real del equipo antes de publicar.
-    </p>
   </div>
 </section>

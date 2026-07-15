@@ -43,9 +43,9 @@ export const treatments = [
     iconPath: 'M12 3 5 6v5c0 4.6 2.9 8.1 7 10 4.1-1.9 7-5.4 7-10V6l-7-3Zm-3 8 2 2 4-4'
   },
   {
-    title: 'Agendar Consulta',
-    description: 'Conversá con nuestro equipo y encontrá el próximo paso adecuado para tu salud bucal.',
+    title: 'Consulta general',
+    description: 'Contanos brevemente tu caso y nuestro equipo te orientará para encontrar el próximo paso adecuado.',
     kind: 'booking',
-    iconPath: 'M6 3v3m12-3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm3 8h3m2 0h3m-8 3h3'
+    iconPath: 'M12 3 5 6v5c0 4.6 2.9 8.1 7 10 4.1-1.9 7-5.4 7-10V6l-7-3Zm-3 8 2 2 4-4'
   }
 ];

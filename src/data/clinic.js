@@ -1,8 +1,8 @@
 export const clinic = {
   name: 'Cavagna & Musacchio',
   tagline: 'Odontología Integral',
-  heroTitle: 'Recuperá tu sonrisa con un equipo de profesionales altamente capacitados.',
-  heroDescription: 'Implantes dentales, rehabilitación oral, estética dental, endodoncia y urgencias. Atención personalizada en Av. Santa Fe 3069, Ciudad de Buenos Aires.',
+  heroTitle: 'Tu sonrisa, en manos de un equipo que te escucha.',
+  heroDescription: 'Atención odontológica personalizada, clara y cercana.',
   locationLabel: '📍 Av. Santa Fe 3069 · Ciudad de Buenos Aires',
   heroTag: 'IMPLANTES DENTALES • ESTÉTICA DENTAL',
   heroStatsLabel: 'Más de 200 pacientes satisfechos',

@@ -1,11 +1,12 @@
 ---
 import { clinic } from '../data/clinic.js';
+import ContactCtaContent from './ContactCtaContent.astro';
 ---
 
 <section class="cta-final" id="contacto">
   <div class="container">
     <h2>{clinic.appointmentHeading}</h2>
     <p>{clinic.appointmentCopy}</p>
-    <button class="btn-nav abrir-modal cta-button cta-primary" type="button">Agendar una consulta</button>
+    <button class="btn-nav abrir-modal cta-button cta-primary contact-cta" type="button"><ContactCtaContent label="Agendar una consulta" /></button>
   </div>
 </section>

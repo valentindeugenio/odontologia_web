@@ -33,7 +33,7 @@
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: start;
   gap: 28px;
 }
@@ -292,6 +292,13 @@
     #0d3c57;
 }
 
+.service-card-booking { grid-column: 1 / -1; min-height: 0; }
+.service-card-booking .service-content { min-height: 0; padding: 42px; }
+.service-card-booking .service-icon, .service-card-booking .service-copy { display: none; }
+.service-booking-content { max-width: 780px; }
+.service-booking-content h3 { margin: 0 0 14px; font-size: clamp(1.75rem, 3vw, 2.45rem); line-height: 1.16; }
+.service-booking-content .cta-primary { margin-top: 8px; }
+
 .service-card-booking .service-content {
   color: white;
 }
@@ -409,6 +416,10 @@
   .service-icon {
     margin-bottom: 29px;
   }
+}
+
+@media (min-width: 761px) and (max-width: 1080px) {
+  .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (prefers-reduced-motion: reduce) {

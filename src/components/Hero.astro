@@ -1,16 +1,47 @@
 ---
 import { clinic } from '../data/clinic.js';
+import ContactCtaContent from './ContactCtaContent.astro';
+
+const slides = [
+  { src: '/images/hero-clinica-01.png', position: '68% center', mobilePosition: '64% center' },
+  { src: '/images/hero-higiene-02.png', position: '70% center', mobilePosition: '68% center' },
+  { src: '/images/hero-instrumental-03.png', position: '72% center', mobilePosition: '71% center' },
+  { src: '/images/hero-equipamiento-04.png', position: '72% center', mobilePosition: '69% center' },
+  { src: '/images/hero-atencion-05.png', position: '68% center', mobilePosition: '66% center' },
+  { src: '/images/hero-diagnostico-06.png', position: '72% center', mobilePosition: '70% center' },
+  { src: '/images/hero-consultorio-07.png', position: '70% center', mobilePosition: '67% center' },
+  { src: '/images/hero-instrumental-08.png', position: '72% center', mobilePosition: '70% center' },
+  { src: '/images/hero-instrumental-09.png', position: '70% center', mobilePosition: '68% center' }
+];
 ---
 
 <header class="hero" id="inicio">
+  <div class="hero-carousel" aria-hidden="true">
+    {slides.map((slide, index) => (
+      <img
+        class:list={['hero-slide', { 'is-active': index === 0 }]}
+        src={slide.src}
+        alt=""
+        loading={index === 0 ? 'eager' : 'lazy'}
+        fetchpriority={index === 0 ? 'high' : 'auto'}
+        decoding="async"
+        style={`--slide-position: ${slide.position}; --slide-position-mobile: ${slide.mobilePosition};`}
+      />
+    ))}
+  </div>
   <div class="hero-overlay" aria-hidden="true"></div>
   <div class="hero-content">
     <div class="hero-copy">
       <h1>{clinic.heroTitle}</h1>
       <p>{clinic.heroDescription}</p>
       <div class="hero-buttons">
-        <a href="#" class="btn-primary cta-primary">Agendar una consulta</a>
+        <a href="#" class="btn-primary cta-primary contact-cta"><ContactCtaContent label="Agendar una consulta" /></a>
       </div>
     </div>
   </div>
+  <button class="hero-carousel-toggle" type="button" aria-label="Pausar carrusel">
+    <svg class="hero-icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 5.5v13M16.5 5.5v13" /></svg>
+    <svg class="hero-icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 9 6-9 6V6Z" /></svg>
+  </button>
+  <div class="hero-carousel-progress" aria-hidden="true"><span></span></div>
 </header>

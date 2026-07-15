@@ -63,13 +63,36 @@
 
 .team-list {
   display: grid;
-  gap: 32px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
 }
 
-.doctor-card {
+.team-showcase {
   display: grid;
-  grid-template-columns: minmax(340px, 0.92fr) minmax(0, 1.08fr);
-  min-height: 460px;
+  grid-template-columns: minmax(0, 1.3fr) minmax(340px, .7fr);
+  min-height: 390px;
+  margin-bottom: 42px;
+  overflow: hidden;
+  border: 1px solid rgba(15, 74, 107, .1);
+  border-radius: 28px;
+  background: #edf4f6;
+  box-shadow: 0 18px 55px rgba(19, 57, 78, .07);
+}
+
+.team-showcase-visual {
+  min-height: 300px;
+  background: url('/images/equipo-grupal.png') center / cover no-repeat;
+}
+
+.team-showcase-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(32px, 5vw, 64px); background: #fff; }
+.team-showcase-copy > span { color: #448090; font-size: 11px; font-weight: 800; letter-spacing: .12em; }
+.team-showcase-copy h3 { margin: 16px 0; color: #173548; font-size: clamp(1.8rem, 2.5vw, 2.7rem); line-height: 1.13; letter-spacing: -.04em; }
+.team-showcase-copy p { color: #61747f; line-height: 1.75; }
+
+.doctor-card {
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
   overflow: hidden;
   border: 1px solid rgba(15, 74, 107, 0.1);
   border-radius: 28px;
@@ -89,7 +112,7 @@
 
 .doctor-portrait {
   position: relative;
-  min-height: 460px;
+  min-height: 310px;
   overflow: hidden;
   background: #e9eef1;
 }
@@ -109,7 +132,7 @@
   display: block;
   width: 100%;
   height: 100%;
-  min-height: 460px;
+  min-height: 310px;
   object-fit: cover;
   object-position: center 22%;
   transition: transform 0.55s ease;
@@ -139,8 +162,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: clamp(40px, 5vw, 68px);
+  padding: 30px;
 }
+
+.doctor-placeholder { display: grid; width: 100%; height: 100%; place-items: center; background: linear-gradient(135deg, #d9e8ed, #a8c8d1); color: #376274; font-size: 13px; font-weight: 800; letter-spacing: .08em; text-align: center; text-transform: uppercase; }
 
 .doctor-info h3 {
   margin-bottom: 8px;
@@ -177,13 +202,10 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .doctor-card {
-    grid-template-columns: minmax(290px, 0.85fr) minmax(0, 1.15fr);
-  }
+  .team-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .team-showcase { grid-template-columns: 1fr; }
 
-  .doctor-info {
-    padding: 40px;
-  }
+  .doctor-info { padding: 30px; }
 
 }
 
@@ -209,14 +231,11 @@
   }
 
   .team-list {
+    grid-template-columns: 1fr;
     gap: 24px;
   }
 
-  .doctor-card {
-    grid-template-columns: 1fr;
-    min-height: 0;
-    border-radius: 22px;
-  }
+  .doctor-card { border-radius: 22px; }
 
   .doctor-portrait,
   .doctor-portrait img {
@@ -224,10 +243,7 @@
     height: min(112vw, 500px);
   }
 
-  .doctor-info {
-    padding: 32px 26px 34px;
-    min-height: 358px;
-  }
+  .doctor-info { min-height: 0; padding: 32px 26px 34px; }
 
   .doctor-info h3 {
     font-size: 2rem;

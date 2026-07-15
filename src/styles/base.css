@@ -9,12 +9,19 @@ html {
   scroll-padding-top: 110px;
 }
 
+section[id] { scroll-margin-top: 108px; }
+
 body {
   font-family: 'Manrope', sans-serif;
   color: var(--text);
   background: white;
   overflow-x: hidden;
 }
+
+.container { width: min(100%, 1480px); padding-inline: clamp(24px, 4vw, 72px); }
+.reveal { opacity: 0; transform: translateY(-18px); transition: opacity 800ms cubic-bezier(.22,1,.36,1), transform 800ms cubic-bezier(.22,1,.36,1); }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
 
 img {
   max-width: 100%;

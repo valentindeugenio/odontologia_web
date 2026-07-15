@@ -1,5 +1,6 @@
 ---
 import { treatments } from '../data/treatments.js';
+import ContactCtaContent from './ContactCtaContent.astro';
 ---
 
 <section class="services" id="tratamientos">
@@ -38,23 +39,16 @@ import { treatments } from '../data/treatments.js';
 
             {treatment.kind === 'booking' ? (
               <div class="service-booking-content">
-                <p>Elegí el motivo de tu consulta y contanos brevemente qué necesitás.</p>
-                <button class="service-booking-button abrir-modal cta-primary" type="button">
-                  Agendar una consulta
-                  <svg viewBox="0 0 20 20" aria-hidden="true">
-                    <path d="M4 10h11M11 6l4 4-4 4"></path>
-                  </svg>
-                </button>
-                <small>Coordinación rápida y personalizada.</small>
+                <h3>¿No sabés qué tratamiento necesitás?</h3>
+                <p>{treatment.description}</p>
+                <button class="service-booking-button abrir-modal cta-primary contact-cta" type="button"><ContactCtaContent label="Resolver mi consulta" /></button>
               </div>
-            ) : (
-              <>
+            ) : <>
                 <button
-                  class="service-toggle abrir-modal"
+                  class="service-toggle"
                   type="button"
                   aria-expanded="false"
                   aria-controls={treatment.detailsId}
-                  data-modal-treatment={treatment.title}
                 >
                   <span class="service-toggle-label">Ver detalles</span>
                   <span class="service-toggle-icon" aria-hidden="true">
@@ -71,17 +65,15 @@ import { treatments } from '../data/treatments.js';
                     </ul>
                     <p>{treatment.footer}</p>
                     <button
-                      class="service-details-cta abrir-modal cta-secondary"
+                      class="service-details-cta abrir-modal cta-secondary contact-cta"
                       type="button"
                       data-modal-treatment={treatment.title}
                     >
-                      Agendar evaluación
-                      <span aria-hidden="true">→</span>
+                      <ContactCtaContent label="Agendar evaluación" />
                     </button>
                   </div>
                 </div>
-              </>
-            )}
+            </>}
           </div>
         </article>
       ))}
